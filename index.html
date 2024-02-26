@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Converter</title>
+
+    <style type="text/css">
+
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing:border-box;
+        }
+
+        html{
+            user-select: none;
+        }
+
+        body{
+            display: grid;
+            place-items:center ;
+            min-height: 100vh;
+            background-color: aqua;
+            
+        }
+
+        .con{
+            border: solid;
+           width: 350px;
+           height: 500px;
+            background: white;
+            padding:40px 30px;
+            font-family: sans-serif;
+            text-align: center;
+            margin-bottom: 30px;
+
+        }
+        .con header{
+            text-align: center;
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .con form{
+            margin: 30px 0 20px;
+        }
+        
+        form.box{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box textarea{
+            height: 30vh;
+            resize: none;
+            padding: 8px 6px;
+        }
+
+    .box textarea::-webkit-scrollbar{
+        width: 0px;
+    }
+
+       .con :where(textarea,select,button){
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid;
+        margin: 8px;
+        height: 100%;
+        width: 100%;
+       }
+       .box.voices{
+        height: 48px;
+        font-size: 16px;
+       }
+
+       button{
+        height: 50px;
+        background: burlywood;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.3sec;
+       }
+
+       .con button:hover{
+        background: burlywood;
+        
+       }
+       .con button:active{
+        transform: scale(0.9);
+       }
+    </style>
+
+</head>
+<body>
+
+    <div class="con">
+        <header>Text to speech converter!!!!</header>
+        <form action="#">
+
+            <div class="box">
+                <lable>Enter the text!!!</lable>
+                <textarea id="text-to-convert"></textarea>
+
+            </div>
+
+            <div class="box">
+                <lable>select voice</lable>
+                <div class="voices">
+                    <select></select>
+
+                </div>
+
+            </div>
+
+            <button onclick="convertToSpeech()">Convert to Speech</button>
+
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    
+        function convertToSpeech() {
+            var text = document.getElementById("text-to-convert").value;
+            var utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    
+</script>
+</html>
